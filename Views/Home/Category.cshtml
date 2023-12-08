@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Category Page";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+            <div class="accordion" id="categoryAccordion">
+
+                <!-- Category 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="fruitsVegetable">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#fruitsVegetableCollapse" aria-expanded="false" aria-controls="fruitsVegetableCollapse">
+                            Fruits and Vegetables <span class="badge bg-secondary">(53)</span>
+                        </button>
+                    </h2>
+                    <div id="fruitsVegetableCollapse" class="accordion-collapse collapse" aria-labelledby="fruitsVegetable">
+                        <div class="accordion-body">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Frozen Fish <span class="badge bg-secondary">(13)</span></a></li>
+                                <li><a href="#">Dried Fish <span class="badge bg-secondary">(09)</span></a></li>
+                                <li><a href="#">Fresh Fish <span class="badge bg-secondary">(17)</span></a></li>
+                                <li><a href="#">Meat Alternatives <span class="badge bg-secondary">(01)</span></a></li>
+                                <li><a href="#">Meat <span class="badge bg-secondary">(11)</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repeat the above structure for other categories -->
+
+            </div>
+
+            <!-- Add sidebar-filter content here -->
+
+        </div>
+
+        <div class="col-xl-9 col-lg-8 col-md-7">
+            <!-- Add content for product listing here -->
+        </div>
+
+    </div>
+</div>
