@@ -17,7 +17,7 @@
     <div class="wrapper">
 	<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
-				<a class="sidebar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+				<a class="sidebar-brand" asp-area="" asp-controller="Admin" asp-action="Index">
 					<span class="align-middle">WePhone</span>
 				</a>
 
@@ -27,37 +27,37 @@
 					</li>
 
 					<li class="sidebar-item @(ViewData["CurrentTab"]?.ToString() == "Index" ? "active" : "")">
-						<a class="sidebar-link" asp-area="" asp-controller="Home" asp-action="Index">
+						<a class="sidebar-link" asp-area="" asp-controller="Admin" asp-action="Index">
 							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
 						</a>	
 					</li>
 
 					<li class="sidebar-item @(ViewData["CurrentTab"]?.ToString() == "Profile" ? "active" : "")">
-						<a class="sidebar-link" asp-area="" asp-controller="Home" asp-action="Profile">
+						<a class="sidebar-link" asp-area="" asp-controller="Admin" asp-action="Profile">
 							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item @(ViewData["CurrentTab"]?.ToString() == "SignIn" ? "active" : "")">
-						<a class="sidebar-link" asp-area="" asp-controller="Home" asp-action="SignIn">
+						<a class="sidebar-link" asp-area="" asp-controller="Admin" asp-action="SignIn">
 							<i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Sign In</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item @(ViewData["CurrentTab"]?.ToString() == "SignUp" ? "active" : "")">
-						<a class="sidebar-link" asp-area="" asp-controller="Home" asp-action="SignUp">
+						<a class="sidebar-link" asp-area="" asp-controller="Admin" asp-action="SignUp">
 							<i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item @(ViewData["CurrentTab"]?.ToString() == "UserCRUD" ? "active" : "")">
-						<a class="sidebar-link" asp-area="" asp-controller="Home" asp-action="UserCRUD">
+						<a class="sidebar-link" asp-area="" asp-controller="Admin" asp-action="UserCRUD">
 							<i class="align-middle" data-feather="users"></i> <span class="align-middle">Users</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item @(ViewData["CurrentTab"]?.ToString() == "Blank" ? "active" : "")">
-						<a class="sidebar-link" asp-area="" asp-controller="Home" asp-action="Blank">
+						<a class="sidebar-link" asp-area="" asp-controller="Admin" asp-action="Blank">
 							<i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
 						</a>
 					</li>

@@ -1,5 +1,6 @@
 ﻿@{
-	ViewData["Title"] = "Sign Up Page";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewData["Title"] = "Sign In Page";
 }
 
 <main class="d-flex w-100">
@@ -9,9 +10,9 @@
 				<div class="d-table-cell align-middle">
 
 					<div class="text-center mt-4">
-						<h1 class="h2">Get started</h1>
+						<h1 class="h2">Welcome back!</h1>
 						<p class="lead">
-							Start creating the best possible user experience for you customers.
+							Sign in to your account to continue
 						</p>
 					</div>
 
@@ -20,26 +21,28 @@
 							<div class="m-sm-3">
 								<form>
 									<div class="mb-3">
-										<label class="form-label">Full name</label>
-										<input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name" />
-									</div>
-									<div class="mb-3">
 										<label class="form-label">Email</label>
 										<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
 									</div>
 									<div class="mb-3">
 										<label class="form-label">Password</label>
-										<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter password" />
+										<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+									</div>
+									<div>
+										<div class="form-check align-items-center">
+											<input id="customControlInline" type="checkbox" class="form-check-input" value="remember-me" name="remember-me" checked>
+											<label class="form-check-label text-small" for="customControlInline">Remember me</label>
+										</div>
 									</div>
 									<div class="d-grid gap-2 mt-3">
-										<a href="index.html" class="btn btn-lg btn-primary">Sign up</a>
+										<a href="index.html" class="btn btn-lg btn-primary">Sign in</a>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
 					<div class="text-center mb-3">
-						Already have account? <a href="pages-sign-in.html">Log In</a>
+						Don't have an account? <a href="pages-sign-up.html">Sign up</a>
 					</div>
 				</div>
 			</div>
