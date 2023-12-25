@@ -70,8 +70,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\css\Admin\" />
-    <Folder Include="wwwroot\js\Admin\" />
     <Folder Include="wwwroot\js\Home\" />
   </ItemGroup>
 
