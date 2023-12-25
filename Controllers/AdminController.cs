@@ -20,9 +20,9 @@ namespace WePhone.Controllers
             return View();
         }
 
-        public IActionResult UserCRUD()
+        public IActionResult ProductCRUD()
         {
-			ViewData["CurrentTab"] = "UserCRUD";
+			ViewData["CurrentTab"] = "ProductCRUD";
 			return View();
         }
 
