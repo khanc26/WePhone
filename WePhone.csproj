@@ -73,4 +73,8 @@
     <Folder Include="wwwroot\js\Home\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Access\Login.cshtml" />
+  </ItemGroup>
+
 </Project>
