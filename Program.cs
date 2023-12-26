@@ -1,4 +1,6 @@
 
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace WePhone
 {
     public class Program
@@ -9,6 +11,12 @@ namespace WePhone
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
+            {
+                option.LoginPath = "/Access/Login";
+                option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+            }
+);
 
             var connectionSring = builder.Configuration.GetConnectionString("MySqlConn");
 
@@ -31,11 +39,13 @@ namespace WePhone
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Access}/{action=Login}/{id?}");
 
             app.Run();
         }
