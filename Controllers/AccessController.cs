@@ -14,20 +14,20 @@ namespace WePhone.Controllers
             ClaimsPrincipal claimUser = HttpContext.User;
             if(claimUser.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ProductCRUD", "Admin");
             }
 
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(ULogin modelLogin)
+        public async Task<IActionResult> Login(VMLogin modelLogin)
         {
-            if (modelLogin.Username == "example" && modelLogin.Password == "password")
+            if (modelLogin.Email == "admin@gmail.com" && modelLogin.Password == "123")
             {
                 List<Claim> claims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.NameIdentifier, modelLogin.Username),
+                    new Claim(ClaimTypes.NameIdentifier, modelLogin.Email),
                     new Claim("OtherProperties","Example Role")
                 };
 
@@ -43,7 +43,7 @@ namespace WePhone.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(identity), properties);
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ProductCRUD", "Admin");
             }
 
             ViewData["ValidateMessage"] = "User not found";
