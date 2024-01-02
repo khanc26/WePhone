@@ -50,6 +50,23 @@ namespace Sign_Up.Controllers
 
                 _dbContext.ULogins.Add(newUser);
                 _dbContext.SaveChanges();
+                List<Claim> claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.NameIdentifier, modelSignUp.Username),
+                    new Claim("OtherProperties", "Example Role")
+                };
+
+                ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                AuthenticationProperties properties = new AuthenticationProperties()
+                {
+                    AllowRefresh = false,
+                    IsPersistent = true
+                };
+
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(identity), properties);
+
                 return RedirectToAction("Index", "Home");
             }
             else if (usernameExists)
