@@ -44,7 +44,7 @@ namespace WePhone.Controllers
 
                 AuthenticationProperties properties = new AuthenticationProperties()
                 {
-                    AllowRefresh = true,
+                    AllowRefresh = false,
                     IsPersistent = modelLogin.KeepLoggedIn
                 };
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace WePhone.Data
 {
@@ -12,7 +13,7 @@ namespace WePhone.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ULogin>().ToTable("USERPHONE");
+            modelBuilder.Entity<ULogin>().ToTable("users");
         }
     }
 }
