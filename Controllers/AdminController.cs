@@ -22,8 +22,12 @@ namespace WePhone.Controllers
 
         public IActionResult ProductCRUD()
         {
-			ViewData["CurrentTab"] = "ProductCRUD";
-			return View();
+			List<Product> smartphones = _context.smartphones.ToList();
+			return View(smartphones);
+        }
+        public IActionResult Info() {
+            List<User> users = _context.Users.ToList();
+            return View(users);
         }
 
 		public IActionResult Category()
