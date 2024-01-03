@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Net;
+using System.Reflection.Metadata;
 
 namespace WePhone.Controllers
 {
@@ -29,7 +32,89 @@ namespace WePhone.Controllers
             List<User> users = _context.Users.ToList();
             return View(users);
         }
+        public IActionResult EditUser(int Id, string Username, string Password, string Full_Name, string Email, string Phone_Number, string Province_City, string District, string Ward, string Specific_Address)
+        {
+            //List<User> users= new List<User>();
+            //var user = users.FirstOrDefault(u=>u.Id == Id);
+            
+                User user = new User
+                {
+                    Id = Id,
+                    Username = Username,
+                    Password = Password,
+                    Full_Name = Full_Name,
+                    Email = Email,
+                    Phone_Number = Phone_Number,
+                    Province_City = Province_City,
+                    District = District,
+                    Ward = Ward,
+                    Specific_Address = Specific_Address,
+                };
+                return View(user);
+        }
+        public IActionResult UpdateUser(User user) {
 
+            var users = user;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var existingUser = _context.Users.Find(user.Id);
+                existingUser.Username = user.Username;
+                existingUser.Password = user.Password;
+                existingUser.Full_Name = user.Full_Name;
+                existingUser.Email = user.Email;
+                existingUser.Phone_Number = user.Phone_Number;
+                existingUser.Province_City = user.Province_City;
+                existingUser.District = user.District;
+                existingUser.Ward = user.Ward;
+                existingUser.Specific_Address = user.Specific_Address;
+
+                try
+                {
+                    // Save changes back to the database
+                    _context.SaveChanges();
+                    return Ok("User updated successfully");
+                }
+                catch (Exception ex)
+                {
+                    // Handle database update exception
+                    // Log the exception or return an appropriate error message
+                    return StatusCode(500, "Error updating user");
+                }
+        }
+        public IActionResult DeleteUser(User user)
+        {
+			var users = user;
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+            
+            try
+			{
+                var userToDelete = _context.Users.Find(user.Id);
+                if (userToDelete != null)
+                {
+                    _context.Users.Remove(userToDelete);
+                    _context.SaveChanges();
+                    return Ok("User deleted successfully");
+                }
+                else
+                {
+                    return NotFound(new { success = false, error = "User not found" });
+                }
+  
+    //            _context.SaveChanges();
+				//return RedirectToInfo();
+			}
+			catch (Exception ex)
+			{
+                
+                return StatusCode(500, new { success = false, error = "Error deleting user" });
+            }
+
+		}
 		public IActionResult Category()
 		{
             //var users = _context.User.ToList();
@@ -42,7 +127,8 @@ namespace WePhone.Controllers
 
             //return Ok(); // Optionally, you can return an IActionResult indicating success
             return View();
-        }
+        }   
+
 
 		public IActionResult Profile()
 		{
@@ -66,6 +152,12 @@ namespace WePhone.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        public IActionResult RedirectToInfo()
+        {
+            return RedirectToAction("Info", "Admin");
         }
     }
 }
