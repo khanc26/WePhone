@@ -1,14 +1,18 @@
-$('.quantity button').on('click', function () {
-    var button = $(this);
-    var oldValue = button.parent().parent().find('input').val();
-    if (button.hasClass('btn-plus')) {
-        var newVal = parseFloat(oldValue) + 1;
-    } else {
-        if (oldValue > 0) {
-            var newVal = parseFloat(oldValue) - 1;
+document.querySelectorAll('.quantity button').forEach(function (button) {
+    button.addEventListener('click', function () {
+        var oldValueElement = this.parentElement.parentElement.querySelector('input');
+        var oldValue = parseFloat(oldValueElement.value);
+
+        if (this.classList.contains('btn-plus')) {
+            var newVal = oldValue + 1;
         } else {
-            newVal = 0;
+            if (oldValue > 0) {
+                var newVal = oldValue - 1;
+            } else {
+                newVal = 0;
+            }
         }
-    }
-    button.parent().parent().find('input').val(newVal);
+
+        oldValueElement.value = newVal;
+    });
 });

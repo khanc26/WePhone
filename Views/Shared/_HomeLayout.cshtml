@@ -10,13 +10,45 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     @await RenderSectionAsync("Links", required: false)
 	@await RenderSectionAsync("Styles", required: false)
-    <link rel="stylesheet" href="css/Home/home.css">
+    <link rel="stylesheet" href="~/css/Home/home.css">
     <link rel="stylesheet" href="~/css/Home/style.css">
 </head>
 <body>
+    <!-- Messenger Chat plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "200860683110408");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <a asp-area="" asp-controller="Admin" asp-action="ProductCRUD">
         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Go to Admin Page</span>
     </a>
+
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 text-center text-lg-end">
@@ -86,23 +118,13 @@
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
-                        <div class="nav-item dropdown dropright">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Dresses <i class="fa fa-angle-right float-end mt-1"></i></a>
-                            <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                                <a href="" class="dropdown-item">Men's Dresses</a>
-                                <a href="" class="dropdown-item">Women's Dresses</a>
-                                <a href="" class="dropdown-item">Baby's Dresses</a>
-                            </div>
-                        </div>
-                        <a href="" class="nav-item nav-link">Shirts</a>
-                        <a href="" class="nav-item nav-link">Jeans</a>
-                        <a href="" class="nav-item nav-link">Swimwear</a>
-                        <a href="" class="nav-item nav-link">Sleepwear</a>
-                        <a href="" class="nav-item nav-link">Sportswear</a>
-                        <a href="" class="nav-item nav-link">Jumpsuits</a>
-                        <a href="" class="nav-item nav-link">Blazers</a>
-                        <a href="" class="nav-item nav-link">Jackets</a>
-                        <a href="" class="nav-item nav-link">Shoes</a>
+                        <a href="" class="nav-item nav-link">Iphone</a>
+                        <a href="" class="nav-item nav-link">Samsung</a>
+                        <a href="" class="nav-item nav-link">Xiaomi</a>
+                        <a href="" class="nav-item nav-link">Google</a>
+                        <a href="" class="nav-item nav-link">Huawei</a>
+                        <a href="" class="nav-item nav-link">Oneplus</a>
+                        <a href="" class="nav-item nav-link">Sony</a>
                     </div>
                 </nav>
             </div>
@@ -112,22 +134,19 @@
                         <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
                         <span class="h1 text-uppercase text-light bg-primary px-2 ms-n1">Shop</span>
                     </a>
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-target="#navbarCollapse">
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav me-auto py-0">
-                            <a class="nav-item nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            <a class="nav-item nav-link active " asp-area="" asp-controller="Home" asp-action="Cart">Shopping Cart</a>
-                            <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Whistlist">Whistlist</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
-                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a class="nav-item nav-link @Html.ActiveClass("Index")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-item nav-link @Html.ActiveClass("Cart")" asp-area="" asp-controller="Home" asp-action="Cart">Shopping Cart</a>
+                            <a class="nav-item nav-link @Html.ActiveClass("Whistlist")" asp-area="" asp-controller="Home" asp-action="Whistlist">Whistlist</a>
+                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Contact" class="nav-item nav-link @Html.ActiveClass("Contact")">Contact</a>
+                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Iphone" class="nav-item nav-link @Html.ActiveClass("Iphone")">Iphone</a>
+                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Samsung" class="nav-item nav-link @Html.ActiveClass("Samsung")">Samsung</a>
+                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Xiaomi" class="nav-item nav-link @Html.ActiveClass("Xiaomi")">Xiaomi</a>
+                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Google" class="nav-item nav-link @Html.ActiveClass("Google")">Google</a>
                         </div>
                         <div class="navbar-nav ms-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
@@ -206,21 +225,22 @@
         </div>
         <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
             <div class="col-md-6 px-xl-0">
-                <p class="mb-md-0 text-center text-md-start text-secondary">
-                    &copy; <a class="text-primary" href="#">Domain</a>. All endtext-lg-ends Reserved. Designed
+                <p class="mb-md-0 text-center text-md-start text-lg-start text-secondary">
+                    &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
                     by
                     <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
                     <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                 </p>
             </div>
-            <div class="col-md-6 px-xl-0 text-center text-md-endtext-lg-end">
-                <img class="img-fluid" src="img/payments.png" alt="">
+            <div class="col-md-6 px-xl-0 text-center text-md-end text-lg-end">
+                <img class="img-fluid" src="~/img/payments.png" alt="">
             </div>
         </div>
     </div>
     <!-- Footer End -->
     <!-- Back to Top -->
     <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a420f36687.js" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)

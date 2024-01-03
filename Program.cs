@@ -7,8 +7,13 @@ namespace WePhone
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
+
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation() ;
+
+            builder.Services.AddRazorPages();
 
             var connectionSring = builder.Configuration.GetConnectionString("MySqlConn");
 
@@ -16,6 +21,14 @@ namespace WePhone
             {
                 options.UseMySql(connectionSring, ServerVersion.AutoDetect(connectionSring));
             });
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Set the session timeout as needed
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -26,7 +39,10 @@ namespace WePhone
                 app.UseHsts();
             }
 
+            app.UseSession();
+
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -36,6 +52,8 @@ namespace WePhone
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapRazorPages();
 
             app.Run();
         }

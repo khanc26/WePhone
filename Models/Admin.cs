@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WePhone.Models
 {
+    [Table("Admin")] 
+    
     public class Admin
     {
         [Key]
