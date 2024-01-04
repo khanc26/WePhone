@@ -60,11 +60,11 @@ namespace WePhone.Controllers
             return View();
         }
 
-        //[AllowAnonymous, HttpGet("ForgetPassword")]
-        //public IActionResult ForgetPassword()
-        //{
-        //    return View();
-        //}
+        [AllowAnonymous, HttpGet("ForgetPassword")]
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
 
         [Route("ForgetPassword")]
         [AllowAnonymous]
