@@ -178,7 +178,10 @@ namespace WePhone.Controllers
 
         public IActionResult Cart()
         {
-            List<Cart> carts = _context.Carts.Include(c => c.Smartphone).Include(c => c.User).Where(c => c.User_Id == 11).ToList();
+            var userIdString = HttpContext.Session.GetString("UserId");
+            int.TryParse(userIdString, out int userId);
+
+            List<Cart> carts = _context.Carts.Include(c => c.Smartphone).Include(c => c.User).Where(c => c.User_Id == userId).ToList();
             _logger.LogInformation("This is cart");
             return View(carts);
         }

@@ -161,7 +161,11 @@
             type: 'POST',
             data: data,
             success: function (result) {
-                alert("Add to cart successfully!");
+                if (result.success) {
+                    alert("Add to cart successfully!");
+                } else {
+                    alert(result.message);
+                }
             },
             error: function (error) {
                 alert(error);
