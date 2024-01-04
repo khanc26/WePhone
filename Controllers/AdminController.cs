@@ -31,7 +31,7 @@ namespace WePhone.Controllers
         public async Task<IActionResult> LogOut()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Access");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Category()

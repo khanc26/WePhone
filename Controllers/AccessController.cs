@@ -14,7 +14,7 @@ namespace WePhone.Controllers
             ClaimsPrincipal claimUser = HttpContext.User;
             if(claimUser.Identity.IsAuthenticated)
             {
-                return RedirectToAction("ProductCRUD", "Admin");
+                return RedirectToAction("Index", "Admin");
             }
 
             return View();
