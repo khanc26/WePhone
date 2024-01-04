@@ -5,6 +5,7 @@ using WePhone.Models;
 using Microsoft.AspNetCore.Authentication;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace WePhone.Controllers
 {
@@ -59,20 +60,23 @@ namespace WePhone.Controllers
             return View();
         }
 
-        [AllowAnonymous, HttpGet("Forget-Password")]
-        public IActionResult ForgetPass()
-        {
-            return View();
-        }
+        //[AllowAnonymous, HttpGet("ForgetPassword")]
+        //public IActionResult ForgetPassword()
+        //{
+        //    return View();
+        //}
 
-        [AllowAnonymous, HttpPost("Forget-Password")]
-        public IActionResult ForgetPass(ForgetPass ForgetPassModel)
+        [Route("ForgetPassword")]
+        [AllowAnonymous]
+        [HttpPost("ForgetPassword")]
+        public IActionResult ForgetPassword(ForgetPass model)
         {
             if (ModelState.IsValid)
             {
                 ModelState.Clear();
+                model.EmailSent = true;
             }
-            return View(ForgetPassModel);
+            return View(model);
         }
     }
 }
