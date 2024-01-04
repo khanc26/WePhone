@@ -1,4 +1,4 @@
-
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Stripe;
 using WePhone.Controllers;
 
@@ -16,7 +16,13 @@ namespace WePhone
             // Add services to the container.
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation() ;
 
-            builder.Services.AddRazorPages();
+            builder.Services.AddControllersWithViews();
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
+            {
+                option.LoginPath = "/Access/Login";
+                option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+            }
+            );
 
             var connectionSring = builder.Configuration.GetConnectionString("MySqlConn");
 
@@ -51,14 +57,14 @@ namespace WePhone
             app.UseStaticFiles();
             StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
             app.UseRouting();
-            app.UseCors();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
-            app.MapRazorPages();
+            //app.MapRazorPages();
 
             app.Run();
         }

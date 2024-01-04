@@ -230,7 +230,7 @@ namespace WePhone.Controllers
             }
             var service = new SessionService();
             var session = service.Create(options);
-            Response.Headers.Add("Location", session.Url);
+            Response.Headers.Add("Location", session.Url); 
 
             return Redirect(session.Url);
         }
