@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using WePhone.Models;
 using Microsoft.AspNetCore.Authentication;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WePhone.Controllers
 {
@@ -56,6 +57,22 @@ namespace WePhone.Controllers
 
             ViewData["ValidateMessage"] = "User not found";
             return View();
+        }
+
+        [AllowAnonymous, HttpGet("Forget-Password")]
+        public IActionResult ForgetPass()
+        {
+            return View();
+        }
+
+        [AllowAnonymous, HttpPost("Forget-Password")]
+        public IActionResult ForgetPass(ForgetPass ForgetPassModel)
+        {
+            if (ModelState.IsValid)
+            {
+                ModelState.Clear();
+            }
+            return View(ForgetPassModel);
         }
     }
 }

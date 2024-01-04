@@ -1,0 +1,83 @@
+﻿@model WePhone.Models.ForgetPass
+
+@{
+    ViewData["Title"] = "ForgetPass";
+    Layout = "~/Views/Shared/_Styles.cshtml";
+}
+
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .form-control {
+        font-size: 14px;
+        width: 250px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
+<h1>ForgetPass</h1>
+
+<h4>ForgetPass</h4>
+<hr />
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4 offset-4">
+            @if (Model?.EmailSent == true)
+            {
+                <div class="alert alert-success" role="alert">
+                    <p>
+                        If you are registered with us, <br />
+                        We have sent an email on your registered email id
+                    </p>
+                </div>
+            }
+            else
+            {
+                <p>Forgot your password? No worries you can reset it easily.</p>
+                <form asp-action="ForgotPassword">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Continue" class="btn btn-primary" />
+                    </div>
+                </form>
+            }
+            <div>
+                <p>Back to  <a asp-action="Login" asp-controller="Account">Login</a></p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,5 +1,5 @@
 ﻿@{
-	Layout = null;
+    Layout = "~/Views/Shared/_Styles.cshtml";
 }
 @model WePhone.Models.ULogin;
 
@@ -11,72 +11,100 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-	<title>SignUp</title>
+    <title>SignUp</title>
     <!-- Include Bootstrap CSS -->
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            font-size: 14px;
+            width: 250px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-
-
     <h1>SignUp</h1>
     <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="SignUp">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Username" class="control-label"></label>
-                    <input asp-for="Username" class="form-control" />
-                    <span asp-validation-for="Username" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="FullName" class="control-label"></label>
-                    <input asp-for="FullName" class="form-control" />
-                    <span asp-validation-for="FullName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PhoneNumber" class="control-label"></label>
-                    <input asp-for="PhoneNumber" class="form-control" />
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ProvinceCity" class="control-label"></label>
-                    <input asp-for="ProvinceCity" class="form-control" />
-                    <span asp-validation-for="ProvinceCity" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="District" class="control-label"></label>
-                    <input asp-for="District" class="form-control" />
-                    <span asp-validation-for="District" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Ward" class="control-label"></label>
-                    <input asp-for="Ward" class="form-control" />
-                    <span asp-validation-for="Ward" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="SpecificAddress" class="control-label"></label>
-                    <input asp-for="SpecificAddress" class="form-control" />
-                    <span asp-validation-for="SpecificAddress" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </form>
+    <div class="form-container">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="SignUp">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FullName" class="control-label"></label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ProvinceCity" class="control-label"></label>
+                        <input asp-for="ProvinceCity" class="form-control" />
+                        <span asp-validation-for="ProvinceCity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="District" class="control-label"></label>
+                        <input asp-for="District" class="form-control" />
+                        <span asp-validation-for="District" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ward" class="control-label"></label>
+                        <input asp-for="Ward" class="form-control" />
+                        <span asp-validation-for="Ward" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SpecificAddress" class="control-label"></label>
+                        <input asp-for="SpecificAddress" class="form-control" />
+                        <span asp-validation-for="SpecificAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
     </div>
 
     @section Scripts {
