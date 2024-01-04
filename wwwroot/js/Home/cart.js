@@ -1,7 +1,14 @@
 document.querySelectorAll('.quantity button').forEach(function (button) {
     button.addEventListener('click', function () {
-        var oldValueElement = this.parentElement.parentElement.querySelector('input');
-        var oldValue = parseFloat(oldValueElement.value);
+        var quantityGroup = this.closest('.quantity');
+        var parentTd = quantityGroup.parentElement.parentElement;
+        var priceElement = parentTd.querySelector('.price');
+        var totalElement = parentTd.querySelector('.total');
+
+        var quantity = this.parentElement.parentElement.querySelector('input');
+
+        // Update input quantity
+        var oldValue = parseFloat(quantity.value);
 
         if (this.classList.contains('btn-plus')) {
             var newVal = oldValue + 1;
@@ -13,6 +20,11 @@ document.querySelectorAll('.quantity button').forEach(function (button) {
             }
         }
 
-        oldValueElement.value = newVal;
+        quantity.value = newVal;
+
+        // Update total price
+        var price = parseFloat(priceElement.textContent.replace('$', ''));
+        var totalPrice = price * quantity.value;
+        totalElement.textContent = "$" + totalPrice.toFixed(3);
     });
 });

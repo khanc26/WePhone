@@ -5,10 +5,9 @@
         <div class="product-img position-relative overflow-hidden">
             <img class="img-fluid w-100" src="~/img/phones/iphone_13_blue.jpg" alt="@Model.Name">
             <div class="product-action">
-                <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                @* <a class="btn btn-outline-dark btn-square" asp-area="" asp-area="" asp-controller="Home" asp-action="PhoneDetail"><i class="fa fa-search"></i></a> *@
-                <a class="btn-show-details" href="@Url.Action("PhoneDetail", "Home", new { id = Model.Id, name = Model.Name, brand = Model.Brand, ram = Model.Ram, rom = Model.Rom, price = Model.Price, discount = Model.Discount, color = Model.Color, picture = Model.Picture })">Show Details</a>
+@*                 <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+ *@                @* <a class="btn btn-outline-dark btn-square" asp-area="" asp-area="" asp-controller="Home" asp-action="PhoneDetail"><i class="fa fa-search"></i></a> *@
+                <a class="btn-show-details btn btn-outline-dark btn-square" href="@Url.Action("PhoneDetail", "Home", new { id = Model.Id, name = Model.Name, brand = Model.Brand, ram = Model.Ram, rom = Model.Rom, price = Model.Price, discount = Model.Discount, color = Model.Color, picture = Model.Picture })"><i class="fa fa-search"></i></a>
             </div>
         </div>
         <div class="text-center py-2">
@@ -21,7 +20,7 @@
                 <h5>$@Model.Price</h5>
                 @if (Model.Discount > 0)
                 {
-                    <h6 class="text-muted ms-2"><del>$@Model.Discount</del></h6>
+                    <h6 class="text-muted ms-2"><del>$@(Math.Round( Model.Price - (1 - Model.Discount/100), 3 ))</del></h6>
                 }
             </div>
         </div>

@@ -1,4 +1,4 @@
-﻿@model List<WePhone.Models.Smartphone>
+﻿@model PaginatedList<Smartphone>
 
 <!-- Carousel Start -->
 <div class="container-fluid mb-3">
@@ -17,7 +17,7 @@
                             <div class="p-3" style="max-width: 700px;">
                                 <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">iPhone 14 Pro</h1>
                                 <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#shop">Shop Now</a>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             <div class="p-3" style="max-width: 700px;">
                                 <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Galaxy Z Fold 3</h1>
                                 <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#shop">Shop Now</a>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             <div class="p-3" style="max-width: 700px;">
                                 <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Mi 11 Ultra</h1>
                                 <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#shop">Shop Now</a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                 <div class="offer-text">
                     <h6 class="text-white text-uppercase">Save 20%</h6>
                     <h3 class="text-white mb-3">Special Offer</h3>
-                    <a href="" class="btn btn-primary">Shop Now</a>
+                    <a href="#shop" class="btn btn-primary">Shop Now</a>
                 </div>
             </div>
             <div class="product-offer mb-30" style="height: 200px;">
@@ -58,7 +58,7 @@
                 <div class="offer-text">
                     <h6 class="text-white text-uppercase">Save 10%</h6>
                     <h3 class="text-white mb-3">Special Offer</h3>
-                    <a href="" class="btn btn-primary">Shop Now</a>
+                    <a href="#shop" class="btn btn-primary">Shop Now</a>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
 </div>
 <!-- Breadcrumb End -->
 <!-- Shop Start -->
-<div class="container-fluid">
+<div id="shop" class="container-fluid">
     <div class="row px-xl-5">
         <!-- Shop Sidebar Start -->
         <div class="col-lg-3 col-md-4">
@@ -118,127 +118,127 @@
                 <form>
                     <!-- Converted radio buttons structure -->
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" checked id="price-all" name="price-group">
+                        <input type="radio" class="custom-control-input" @(ViewData["priceGroup"]?.ToString() == "price-all" ? "checked" : "") id="price-all" name="price-group">
                         <label class="custom-control-label" for="price-all">All Price</label>
                         @* <span class="badge border font-weight-normal">1000</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="price-1" name="price-group">
+                        <input type="radio" class="custom-control-input" id="price-1" @(ViewData["priceGroup"]?.ToString() == "price-1" ? "checked" : "") name="price-group">
                         <label class="custom-control-label" for="price-1">$100 - $500</label>
                         @* <span class="badge border font-weight-normal">150</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="price-2" name="price-group">
+                        <input type="radio" class="custom-control-input" id="price-2" @(ViewData["priceGroup"]?.ToString() == "price-2" ? "checked" : "") name="price-group">
                         <label class="custom-control-label" for="price-2">$500 - $900</label>
                         @* <span class="badge border font-weight-normal">295</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="price-3" name="price-group">
+                        <input type="radio" class="custom-control-input" id="price-3" @(ViewData["priceGroup"]?.ToString() == "price-3" ? "checked" : "") name="price-group">
                         <label class="custom-control-label" for="price-3">$900 - $1200</label>
                         @* <span class="badge border font-weight-normal">246</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="price-4" name="price-group">
+                        <input type="radio" class="custom-control-input" id="price-4" @(ViewData["priceGroup"]?.ToString() == "price-4" ? "checked" : "") name="price-group">
                         <label class="custom-control-label" for="price-4">$1200 - $1600</label>
                         @* <span class="badge border font-weight-normal">145</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
-                        <input type="radio" class="custom-control-input" id="price-5" name="price-group">
+                        <input type="radio" class="custom-control-input" id="price-5" @(ViewData["priceGroup"]?.ToString() == "price-5" ? "checked" : "") name="price-group">
                         <label class="custom-control-label" for="price-5">$1600 - $2100</label>
                         @* <span class="badge border font-weight-normal">168</span> *@
                     </div>
                 </form>
             </div>
             <!-- Price End -->
-            <!-- Color Start -->
-            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by color</span></h5>
-            <div class="bg-light p-4 mb-30">
-                <form>
-                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" checked id="color-all" name="color-group">
-                        <label class="custom-control-label" for="color-all">All Color</label>
-                        @* <span class="badge border font-weight-normal">1000</span> *@
-                    </div>
-
-                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="color-1" name="color-group">
-                        <label class="custom-control-label" for="color-1">Black</label>
-                        @* <span class="badge border font-weight-normal">150</span> *@
-                    </div>
-
-                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="color-2" name="color-group">
-                        <label class="custom-control-label" for="color-2">White</label>
-                        @* <span class="badge border font-weight-normal">295</span> *@
-                    </div>
-
-                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="color-3" name="color-group">
-                        <label class="custom-control-label" for="color-3">Red</label>
-                        @* <span class="badge border font-weight-normal">246</span> *@
-                    </div>
-
-                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="color-4" name="color-group">
-                        <label class="custom-control-label" for="color-4">Blue</label>
-                        @* <span class="badge border font-weight-normal">145</span> *@
-                    </div>
-
-                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
-                        <input type="radio" class="custom-control-input" id="color-5" name="color-group">
-                        <label class="custom-control-label" for="color-5">Green</label>
-                        @* <span class="badge border font-weight-normal">168</span> *@
-                    </div>
-                </form>
-            </div>
-            <!-- Color End -->
             <!-- Size Start -->
             <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by RAM size</span></h5>
             <div class="bg-light p-4 mb-30">
                 <form>
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" checked id="size-all" name="size-group">
-                        <label class="custom-control-label" for="size-all">All RAM size</label>
+                        <input type="radio" class="custom-control-input" @(ViewData["ramGroup"]?.ToString() == "ram-all" ? "checked" : "") id="ram-all" name="ram-group">
+                        <label class="custom-control-label" for="ram-all">All RAM size</label>
                         @* <span class="badge border font-weight-normal">1000</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="size-1" name="size-group">
-                        <label class="custom-control-label" for="size-1">1 - 2 GB</label>
+                        <input type="radio" class="custom-control-input" id="ram-1" @(ViewData["ramGroup"]?.ToString() == "ram-1" ? "checked" : "") name="ram-group">
+                        <label class="custom-control-label" for="ram-1">1 - 2 GB</label>
                         @* <span class="badge border font-weight-normal">150</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="size-2" name="size-group">
-                        <label class="custom-control-label" for="size-2">2 - 4 GB</label>
+                        <input type="radio" class="custom-control-input" id="ram-2" @(ViewData["ramGroup"]?.ToString() == "ram-2" ? "checked" : "") name="ram-group">
+                        <label class="custom-control-label" for="ram-2">2 - 4 GB</label>
                         @* <span class="badge border font-weight-normal">295</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="size-3" name="size-group">
-                        <label class="custom-control-label" for="size-3">4 - 8 GB</label>
+                        <input type="radio" class="custom-control-input" id="ram-3" @(ViewData["ramGroup"]?.ToString() == "ram-3" ? "checked" : "") name="ram-group">
+                        <label class="custom-control-label" for="ram-3">4 - 8 GB</label>
                         @* <span class="badge border font-weight-normal">246</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
-                        <input type="radio" class="custom-control-input" id="size-4" name="size-group">
-                        <label class="custom-control-label" for="size-4">8 - 12 GB</label>
+                        <input type="radio" class="custom-control-input" id="ram-4" @(ViewData["ramGroup"]?.ToString() == "ram-4" ? "checked" : "") name="ram-group">
+                        <label class="custom-control-label" for="ram-4">8 - 12 GB</label>
                         @* <span class="badge border font-weight-normal">145</span> *@
                     </div>
 
                     <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
-                        <input type="radio" class="custom-control-input" id="size-5" name="size-group">
-                        <label class="custom-control-label" for="size-5">12 - 16 GB</label>
+                        <input type="radio" class="custom-control-input" id="ram-5" @(ViewData["ramGroup"]?.ToString() == "ram-5" ? "checked" : "") name="ram-group">
+                        <label class="custom-control-label" for="ram-5">12 - 16 GB</label>
                         @* <span class="badge border font-weight-normal">168</span> *@
                     </div>
                 </form>
             </div>
             <!-- Size End -->
+            <!-- Rom Start -->
+            <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by ROM size</span></h5>
+            <div class="bg-light p-4 mb-30">
+                <form>
+                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" @(ViewData["romGroup"]?.ToString() == "size-all" ? "checked" : "") id="size-all" name="rom-group">
+                        <label class="custom-control-label" for="size-all">All ROM size</label>
+                        @* <span class="badge border font-weight-normal">1000</span> *@
+                    </div>
+
+                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" id="size-1" @(ViewData["romGroup"]?.ToString() == "size-1" ? "checked" : "") name="rom-group">
+                        <label class="custom-control-label" for="size-1">1 - 32 GB</label>
+                        @* <span class="badge border font-weight-normal">150</span> *@
+                    </div>
+
+                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" id="size-2" @(ViewData["romGroup"]?.ToString() == "size-2" ? "checked" : "") name="rom-group">
+                        <label class="custom-control-label" for="size-2">32 - 64 GB</label>
+                        @* <span class="badge border font-weight-normal">295</span> *@
+                    </div>
+
+                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" id="size-3" @(ViewData["romGroup"]?.ToString() == "size-3" ? "checked" : "") name="rom-group">
+                        <label class="custom-control-label" for="size-3">64 - 128 GB</label>
+                        @* <span class="badge border font-weight-normal">246</span> *@
+                    </div>
+
+                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between mb-3">
+                        <input type="radio" class="custom-control-input" id="size-4" @(ViewData["romGroup"]?.ToString() == "size-4" ? "checked" : "") name="rom-group">
+                        <label class="custom-control-label" for="size-4">128 - 512 GB</label>
+                        @* <span class="badge border font-weight-normal">145</span> *@
+                    </div>
+
+                    <div class="custom-control custom-radio d-flex align-items-center justify-content-between">
+                        <input type="radio" class="custom-control-input" id="size-5" @(ViewData["romGroup"]?.ToString() == "size-5" ? "checked" : "") name="rom-group">
+                        <label class="custom-control-label" for="size-5">512 - 1024 GB</label>
+                        @* <span class="badge border font-weight-normal">168</span> *@
+                    </div>
+                </form>
+            </div>
+            <!-- Rom End -->
         </div>
         <!-- Shop Sidebar End -->
         <!-- Shop Product Start -->
@@ -248,21 +248,22 @@
                     <div class="d-flex align-items-center justify-content-end mb-4">
                         <div class="ms-2">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-bs-toggle="dropdown">Sorting</button>
+                                <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-bs-toggle="dropdown"> @(ViewData["sortOrder"]?.ToString() ?? "Sorting")</button>
                                 <div class="dropdown-menu dropdown-menu-endtext-lg-end">
-                                    <a class="dropdown-item" href="#">Ram</a>
-                                    <a class="dropdown-item" href="#">Rom</a>
-                                    <a class="dropdown-item" href="#">Price</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "ram", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Ram</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "rom", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Rom</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "price", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Price</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "name", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Name</a>
                                 </div>
                             </div>
-                            <div class="btn-group ms-2">
+                            @* <div class="btn-group ms-2">
                                 <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-bs-toggle="dropdown">Showing</button>
                                 <div class="dropdown-menu dropdown-menu-endtext-lg-end">
-                                    <a class="dropdown-item" href="#">10</a>
-                                    <a class="dropdown-item" href="#">20</a>
-                                    <a class="dropdown-item" href="#">30</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { pageSize = 10 })>10</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { pageSize = 20 })>20</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { pageSize = 30 })>30</a>
                                 </div>
-                            </div>
+                            </div> *@
                         </div>
                     </div>
                 </div>
@@ -276,8 +277,26 @@
                         <partial name="Component/_PhoneItem" model="@phone" />
                     }
                 }
-
                 <div class="col-12">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            @{
+                                var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                                var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                            }
+
+                            <li class="page-item @prevDisabled"><a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex - 1, sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Previous</a></li>
+
+                            @for (var i = 1; i <= Model.TotalPages; i++)
+                            {
+                                <li class="page-item @(i == Model.PageIndex ? "active" : "")"><a class="page-link" href="@Url.Action("Index", new { pageNumber = i, sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">@i</a></li>
+                            }
+
+                            <li class="page-item @nextDisabled"><a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex + 1,  sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                @* <div class="col-12">
                     <nav>
                         <ul class="pagination justify-content-center">
                             <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
@@ -287,13 +306,41 @@
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul>
                     </nav>
-                </div>
+                </div> *@
             </div>
         </div>
         <!-- Shop Product End -->
     </div>
 </div>
 <!-- Shop End -->
+<script>
+    document.querySelectorAll('[name="price-group"]').forEach(function (radio) {
+        radio.addEventListener('click', function () {
+            var selectedPriceGroup = this.id;
+            var selectedRamGroup = '@ViewData["ramGroup"]?.ToString()';
+            var selectedRomGroup = '@ViewData["romGroup"]?.ToString()';
+            window.location.href = '@Url.Action("Index")?priceGroup=' + selectedPriceGroup + "&ramGroup=" + selectedRamGroup + '&romGroup=' + selectedRomGroup;
+        });
+    });
+    document.querySelectorAll('[name="rom-group"]').forEach(function (radio) {
+        radio.addEventListener('click', function () {
+            console.log(this);
+            var selectedRomGroup = this.id;
+            var selectedRamGroup = '@ViewData["ramGroup"]?.ToString()';
+            var selectedPriceGroup = '@ViewData["priceGroup"]?.ToString()';
+            window.location.href = '@Url.Action("Index")?romGroup=' + selectedRomGroup + "&ramGroup=" + selectedRamGroup + "&priceGroup=" + selectedPriceGroup;
+        });
+    });
+    document.querySelectorAll('[name="ram-group"]').forEach(function (radio) {
+        radio.addEventListener('click', function () {
+            console.log(this);
+            var selectedRamGroup = this.id;
+            var selectedRomGroup = '@ViewData["romGroup"]?.ToString()';
+            var selectedPriceGroup = '@ViewData["priceGroup"]?.ToString()';
+            window.location.href = '@Url.Action("Index")?ramGroup=' + selectedRamGroup + "&priceGroup=" + selectedPriceGroup + '&romGroup=' + selectedRomGroup;
+        });
+    });
+</script>
 
 @section Scripts {
     <script defer src="~/js/Home/home.js"></script>

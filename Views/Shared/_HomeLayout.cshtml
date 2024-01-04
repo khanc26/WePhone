@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/css/Home/style.css">
 </head>
 <body>
-    <!-- Messenger Chat plugin Code -->
+    @* <!-- Messenger Chat plugin Code -->
     <div id="fb-root"></div>
 
     <!-- Your Chat plugin code -->
@@ -43,7 +43,7 @@
             js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-    </script>
+    </script> *@
 
     <a asp-area="" asp-controller="Admin" asp-action="ProductCRUD">
         <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Go to Admin Page</span>
@@ -53,10 +53,6 @@
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="" class="btn px-0 ms-2">
-                        <i class="fas fa-heart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
                     <a href="" class="btn px-0 ms-2">
                         <i class="fas fa-shopping-cart text-dark"></i>
                         <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
@@ -118,13 +114,9 @@
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
-                        <a href="" class="nav-item nav-link">Iphone</a>
-                        <a href="" class="nav-item nav-link">Samsung</a>
-                        <a href="" class="nav-item nav-link">Xiaomi</a>
-                        <a href="" class="nav-item nav-link">Google</a>
-                        <a href="" class="nav-item nav-link">Huawei</a>
-                        <a href="" class="nav-item nav-link">Oneplus</a>
-                        <a href="" class="nav-item nav-link">Sony</a>
+                        <a class="nav-item nav-link @Html.ActiveClass("Index")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-item nav-link @Html.ActiveClass("Cart")" asp-area="" asp-controller="Home" asp-action="Cart">Shopping Cart</a>
+                        <a asp-area="" asp-area="" asp-controller="Home" asp-action="Contact" class="nav-item nav-link @Html.ActiveClass("Contact")">Contact</a>
                     </div>
                 </nav>
             </div>
@@ -141,18 +133,9 @@
                         <div class="navbar-nav me-auto py-0">
                             <a class="nav-item nav-link @Html.ActiveClass("Index")" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             <a class="nav-item nav-link @Html.ActiveClass("Cart")" asp-area="" asp-controller="Home" asp-action="Cart">Shopping Cart</a>
-                            <a class="nav-item nav-link @Html.ActiveClass("Whistlist")" asp-area="" asp-controller="Home" asp-action="Whistlist">Whistlist</a>
-                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Contact" class="nav-item nav-link @Html.ActiveClass("Contact")">Contact</a>
-                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Iphone" class="nav-item nav-link @Html.ActiveClass("Iphone")">Iphone</a>
-                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Samsung" class="nav-item nav-link @Html.ActiveClass("Samsung")">Samsung</a>
-                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Xiaomi" class="nav-item nav-link @Html.ActiveClass("Xiaomi")">Xiaomi</a>
-                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Google" class="nav-item nav-link @Html.ActiveClass("Google")">Google</a>
+                            <a asp-area="" asp-area="" asp-controller="Home" asp-action="Contact" class="nav-item nav-link @Html.ActiveClass("Contact")">Contact Us</a>
                         </div>
                         <div class="navbar-nav ms-auto py-0 d-none d-lg-block">
-                            <a href="" class="btn px-0">
-                                <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
                             <a href="" class="btn px-0 ms-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>

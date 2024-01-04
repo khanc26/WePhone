@@ -1,4 +1,7 @@
 
+using Stripe;
+using WePhone.Controllers;
+
 namespace WePhone
 {
     public class Program
@@ -22,6 +25,8 @@ namespace WePhone
                 options.UseMySql(connectionSring, ServerVersion.AutoDetect(connectionSring));
             });
 
+            builder.Services.Configure<StripeSetting>(builder.Configuration.GetSection("Stripe"));
+
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30); // Set the session timeout as needed
@@ -44,9 +49,9 @@ namespace WePhone
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
-
+            StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
 
             app.MapControllerRoute(

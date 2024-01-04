@@ -9,11 +9,11 @@ namespace WePhone.Models
 
             public int User_Id { get; set; }
             [ForeignKey("User_Id")]
-            public User? User { get; set; }
+            public virtual User? User { get; set; }
 
             public int Phone_Id { get; set; }
             [ForeignKey("Phone_Id")]
-            public Smartphone? Smartphone { get; set; }
+            public virtual Smartphone? Smartphone { get; set; }
 
             public int Quantity { get; set; }
     }
