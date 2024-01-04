@@ -250,10 +250,10 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-bs-toggle="dropdown"> @(ViewData["sortOrder"]?.ToString() ?? "Sorting")</button>
                                 <div class="dropdown-menu dropdown-menu-endtext-lg-end">
-                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "ram", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Ram</a>
-                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "rom", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Rom</a>
-                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "price", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Price</a>
-                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "name", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Name</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "ram", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"], searchName = ViewData["searchName"] })">Ram</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "rom", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"], searchName = ViewData["searchName"] })">Rom</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "price", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"], searchName = ViewData["searchName"] })">Price</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", new { sortOrder = "name", pageNumber = ViewData["pageNumber"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"], searchName = ViewData["searchName"] })">Name</a>
                                 </div>
                             </div>
                             @* <div class="btn-group ms-2">
@@ -285,14 +285,14 @@
                                 var nextDisabled = !Model.HasNextPage ? "disabled" : "";
                             }
 
-                            <li class="page-item @prevDisabled"><a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex - 1, sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Previous</a></li>
+                            <li class="page-item @prevDisabled"><a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex - 1, sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"], searchName = ViewData["searchName"] })">Previous</a></li>
 
                             @for (var i = 1; i <= Model.TotalPages; i++)
                             {
-                                <li class="page-item @(i == Model.PageIndex ? "active" : "")"><a class="page-link" href="@Url.Action("Index", new { pageNumber = i, sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">@i</a></li>
+                                <li class="page-item @(i == Model.PageIndex ? "active" : "")"><a class="page-link" href="@Url.Action("Index", new { pageNumber = i, sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"], searchName = ViewData["searchName"] })">@i</a></li>
                             }
 
-                            <li class="page-item @nextDisabled"><a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex + 1,  sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] })">Next</a></li>
+                            <li class="page-item @nextDisabled"><a class="page-link" href="@Url.Action("Index", new { pageNumber = Model.PageIndex + 1,  sortOrder = ViewData["sortOrder"], priceGroup = ViewData["priceGroup"], romGroup = ViewData["romGroup"],  ramGroup = ViewData["ramGroup"] , searchName = ViewData["searchName"] })">Next</a></li>
                         </ul>
                     </nav>
                 </div>

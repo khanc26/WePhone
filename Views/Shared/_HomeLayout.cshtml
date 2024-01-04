@@ -53,10 +53,7 @@
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="" class="btn px-0 ms-2">
-                        <i class="fas fa-shopping-cart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">0</span>
-                    </a>
+                   
                 </div>
             </div>
         </div>
@@ -68,9 +65,9 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-start">
-                <form action="">
+                <form action="@Url.Action("Index", "Home")" method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
+                        <input type="text" class="form-control"  placeholder="Search for products">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
@@ -80,11 +77,16 @@
                 </form>
             </div>
             <div style="height: 60px;" class="col-lg-4 col-6 text-end text-lg-end">
-                @if (User.Identity.IsAuthenticated)
+                @{
+                    string userId = Context.Session.GetString("UserId");
+                    string fullName = Context.Session.GetString("FullName");
+                }
+
+                @if (!string.IsNullOrEmpty(userId))
                 {
                     <div class="h-100 logout_dropdown">
                         <button class="h-100 btn btn-dark btn-lg me-lg-n1 btn-disable-hover" type="button">
-                            Hi, Nguyễn Văn A
+                            Hi, @fullName
                         </button>
                         <button type="button" class="h-100 btn btn-lg btn-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
@@ -92,6 +94,12 @@
                         <ul class="dropdown-menu p-0">
                             <li style="height: 50px;"> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LogOut">Log out<i class="fa-solid fa-right-from-bracket fa-lg"></i></a></li>
                         </ul>
+                    </div>
+                } else
+                {
+                    <div class="h-100">
+                        <a asp-controller="Home" asp-action="SignIn" class="btn btn-dark btn-lg me-lg-1">Login</a>
+                        <a asp-controller="Home" asp-action="SignUp" class="btn btn-dark btn-lg">SignUp</a>
                     </div>
                 }
             </div>
@@ -137,10 +145,7 @@
                             <a asp-area="" asp-area="" asp-controller="Home" asp-action="Contact" class="nav-item nav-link @Html.ActiveClass("Contact")">Contact Us</a>
                         </div>
                         <div class="navbar-nav ms-auto py-0 d-none d-lg-block">
-                            <a href="" class="btn px-0 ms-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                            
                         </div>
                     </div>
                 </nav>
@@ -157,9 +162,9 @@
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
                 <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
                 <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p>
-                <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Trường Đại học Công nghệ Thông tin - UIT</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>21522179@gmail.cpm</p>
+                <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+123 123 123</p>
             </div>
             <div class="col-lg-8 col-md-12">
                 <div class="row">

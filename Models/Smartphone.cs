@@ -30,7 +30,6 @@ namespace WePhone.Models
         [Required(ErrorMessage = "Color is required")]
         public string? Color { get; set; }
 
-        [Required(ErrorMessage = "Picture is required")]
         public string? Picture { get; set; }
     }
 }

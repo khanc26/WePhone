@@ -1,7 +1,7 @@
 ﻿@model Cart
 
 <tr>
-    <td class="align-middle"><img src="~/img/phones/iphone_13_blue.jpg" alt="" style="width: 100px;">@Model.Smartphone?.Name</td>
+    <td class="align-middle"><img src="~/img/phones/@(Model.Smartphone.Picture).jpg" alt="" style="width: 100px;">@Model.Smartphone?.Name</td>
     <td class="price align-middle">$@(Math.Round(   Model.Smartphone.Price * (1 - Model.Smartphone.Discount / 100), 3   ))</td>
     <td class="align-middle">
         <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -19,5 +19,9 @@
         </div>
     </td>
     <td class="total align-middle">$@(Model.Smartphone?.Price * Model.Quantity)</td>
-    <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+    <td class="align-middle">
+        <a href="@Url.Action("RemoveFromCart", "Home", new { cartId = Model.Id })" class="btn btn-sm btn-danger">
+            <i class="fa fa-times"></i>
+        </a>
+    </td>
 </tr>

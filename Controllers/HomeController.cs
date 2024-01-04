@@ -18,21 +18,28 @@ namespace WePhone.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index(int? pageNumber = 1, string? sortOrder = "", string? priceGroup = "price-all", string? ramGroup = "ram-all", string? romGroup = "size-all")
+        public async Task<IActionResult> Index(int? pageNumber = 1, string? sortOrder = "", string? priceGroup = "price-all", string? ramGroup = "ram-all", string? romGroup = "size-all", string? searchName = "")
         {
             ViewData["pageNumber"] = pageNumber;
             ViewData["sortOrder"] = sortOrder;
             ViewData["priceGroup"] = priceGroup;
             ViewData["romGroup"] = romGroup;
             ViewData["ramGroup"] = ramGroup;
+            ViewData["searchName"] = searchName;
 
 
             const int pageSize = 18;
 
-            HttpContext.Session.SetString("UserId", "11");
+            //HttpContext.Session.SetString("UserId", "11");
 
             var smartphones = from s in _context.Smartphones
                            select s;
+            if(searchName == "")
+            {
+            } else if (!String.IsNullOrEmpty(searchName))
+            {
+                smartphones = smartphones.Where(s => s.Name.ToLower().Contains(searchName.ToLower()));
+            }
 
             if (!String.IsNullOrEmpty(priceGroup))
             {
@@ -238,5 +245,34 @@ namespace WePhone.Controllers
 
             return Redirect(session.Url);
         }
+
+        public IActionResult RemoveFromCart(int cartId)
+        {
+            var cartItem = _context.Carts.Find(cartId);
+
+            if (cartItem != null)
+            {
+                _context.Carts.Remove(cartItem);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Cart", "Home");
+        }
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Remove("UserId");
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
     }
 }
