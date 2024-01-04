@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace WePhone.Controllers
@@ -25,8 +27,14 @@ namespace WePhone.Controllers
 			ViewData["CurrentTab"] = "ProductCRUD";
 			return View();
         }
+      
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Access");
+        }
 
-		public IActionResult Category()
+        public IActionResult Category()
 		{
             //var users = _context.User.ToList();
 

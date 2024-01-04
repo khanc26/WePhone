@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Stripe;
 using WePhone.Controllers;
 
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace WePhone
 {
     public class Program
@@ -62,7 +64,7 @@ namespace WePhone
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Access}/{action=Login}/{id?}");
 
             //app.MapRazorPages();
 
