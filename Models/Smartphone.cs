@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WePhone.Models
 {
     [Table("smartphones")]
-    public class Product
+    public class Smartphone
     {
         [Key]
         public int Id { get; set; }

@@ -25,7 +25,7 @@ namespace WePhone.Controllers
 
         public IActionResult ProductCRUD()
         {
-			List<Product> smartphones = _context.smartphones.ToList();
+			List<Smartphone> smartphones = _context.Smartphones.ToList();
 			return View(smartphones);
         }
         public IActionResult Info() {
@@ -51,6 +51,22 @@ namespace WePhone.Controllers
                     Specific_Address = Specific_Address,
                 };
                 return View(user);
+        }
+        public IActionResult EditProduct(int Id, string Name, string Brand, int Ram, int Rom, decimal Price, decimal Discount, string Color)
+        {
+
+            Smartphone smartphone=new Smartphone
+            {
+                Id = Id,
+                Name= Name,
+                Brand = Brand,
+                Ram = Ram,
+                Rom = Rom,
+                Price = Price,
+                Discount = Discount,
+                Color = Color
+            };
+            return View(smartphone);
         }
         public IActionResult UpdateUser(User user) {
 
@@ -115,7 +131,87 @@ namespace WePhone.Controllers
             }
 
 		}
-		public IActionResult Category()
+        public IActionResult UpdateProduct(Smartphone smartphone)
+        {
+
+            var smartphones = smartphone;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var existingProduct = _context.Smartphones.Find(smartphone.Id);
+            existingProduct.Name = smartphone.Name;
+            existingProduct.Brand = smartphone.Brand;
+            existingProduct.Ram = smartphone.Ram;
+            existingProduct.Rom = smartphone.Rom;
+            existingProduct.Price = smartphone.Price;
+            existingProduct.Discount = smartphone.Discount;
+            existingProduct.Color = smartphone.Color;
+            try
+            {
+                // Save changes back to the database
+                _context.SaveChanges();
+                return Ok("Product updated successfully");
+            }
+            catch (Exception ex)
+            {
+                // Handle database update exception
+                // Log the exception or return an appropriate error message
+                return StatusCode(500, "Error updating Product");
+            }
+        }
+        public IActionResult DeleteProduct(Smartphone smartphone)
+        {
+            var smartphones = smartphone;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var ProductToDelete = _context.Smartphones.Find(smartphone.Id);
+                if (ProductToDelete != null)
+                {
+                    _context.Smartphones.Remove(ProductToDelete);
+                    _context.SaveChanges();
+                    return Ok("User deleted successfully");
+                }
+                else
+                {
+                    return NotFound(new { success = false, error = "User not found" });
+                }
+
+                //            _context.SaveChanges();
+                //return RedirectToInfo();
+            }
+            catch (Exception ex)
+            {
+
+                return StatusCode(500, new { success = false, error = "Error deleting user" });
+            }
+
+        }
+        //public IActionResult CreateProduct()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        public async Task<IActionResult> CreateProduct(Smartphone product)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Smartphones.Add(product);
+                await _context.SaveChangesAsync();
+
+            return RedirectToAction("ProductCRUD"); // Assuming there's an "Index" action for listing products.
+            }
+
+            // If ModelState is not valid, return the view with validation errors
+            return View(product);
+        }
+        public IActionResult Category()
 		{
             //var users = _context.User.ToList();
 

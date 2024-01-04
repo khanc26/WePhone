@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "../Shared/_AdminLayout.cshtml";
 }
-@model List<Product>
+@model List<Smartphone>
 @section Styles {
     <link href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
 }
@@ -25,6 +25,7 @@
                 <th>Price</th>
                 <th>Discount</th>
                 <th>Color</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -39,21 +40,27 @@
                     <td>@item.Price</td>
                     <td>@item.Discount</td>
                     <td>@item.Color</td>
+                        <td>@Html.ActionLink("Edit", "EditProduct", "Admin",
+            new
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Brand = item.Brand,
+                Ram = item.Ram,
+                Rom = item.Rom,
+                Price = item.Price,
+                Discount = item.Discount,
+                Color = item.Color,
+            },
+            new { @class = "btn btn-primary btn-sm" })</td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
-@* <div id="userContent">
-    <h2>User Content</h2>
-    <!-- Add your content for the User section here -->
+<div>
+    <a asp-action="CreateProduct" class="btn btn-primary">Add</a>
 </div>
-
-<div id="revenueContent">
-    <h2>Revenue Content</h2>
-    <!-- Add your content for the Revenue section here -->
-</div> *@
 
 @section Scripts {
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
