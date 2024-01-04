@@ -80,19 +80,22 @@
                 </form>
             </div>
             <div style="height: 60px;" class="col-lg-4 col-6 text-end text-lg-end">
-                <div class="h-100 logout_dropdown">
-                    <button class="h-100 btn btn-dark btn-lg me-lg-n1 btn-disable-hover" type="button">
-                        Xin chào @@{
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="h-100 logout_dropdown">
+                        <button class="h-100 btn btn-dark btn-lg me-lg-n1 btn-disable-hover" type="button">
+                            Xin chào @@{
                             User
-                        }
-                    </button>
-                    <button type="button" class="h-100 btn btn-lg btn-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu p-0">
-                        <li style="height: 50px;"><a class="h-100 w-100 dropdown-item p-0 d-flex align-items-center justify-content-evenly" href="#">Đăng xuất<i class="fa-solid fa-right-from-bracket fa-lg"></i></a></li>
-                    </ul>
-                </div>
+                            }
+                        </button>
+                        <button type="button" class="h-100 btn btn-lg btn-dark dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu p-0">
+                            <li style="height: 50px;"> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LogOut">Log out<i class="fa-solid fa-right-from-bracket fa-lg"></i></a></li>
+                        </ul>
+                    </div>
+                }
             </div>
             <!-- <div class="btn-group col-lg-4 col-6 text-end text-lg-end">
                 <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-bs-toggle="dropdown">My Account</button>
