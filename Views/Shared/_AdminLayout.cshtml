@@ -42,15 +42,12 @@
                                         <a class="nav-link" asp-controller="Admin" asp-action="Info">Info</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" >Cart</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" >History Payment</a>
+                                        <a class="nav-link" asp-controller="Admin" asp-action="Invoices">Invoices</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="collapse" href="#revenueCollapse" role="button" aria-expanded="false" aria-controls="revenueCollapse">
                                 Revenue
                             </a>
@@ -61,7 +58,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> *@
                     </ul>
                 </div>
             </nav>

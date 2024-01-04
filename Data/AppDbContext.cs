@@ -11,5 +11,6 @@
         public DbSet<User>? Users { get; set; }
 
         public DbSet<Smartphone>? Smartphones { get; set; }
+        public DbSet<Invoices>? Invoices { get; set; }
     }
 }

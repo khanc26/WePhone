@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Core.Types;
 using System.Diagnostics;
 using System.Net;
 using System.Reflection.Metadata;
@@ -31,6 +32,10 @@ namespace WePhone.Controllers
         public IActionResult Info() {
             List<User> users = _context.Users.ToList();
             return View(users);
+        }
+        public IActionResult Invoices() {
+            List<Invoices> invoices = _context.Invoices.ToList();
+            return View(invoices);
         }
         public IActionResult EditUser(int Id, string Username, string Password, string Full_Name, string Email, string Phone_Number, string Province_City, string District, string Ward, string Specific_Address)
         {
@@ -120,9 +125,6 @@ namespace WePhone.Controllers
                 {
                     return NotFound(new { success = false, error = "User not found" });
                 }
-  
-    //            _context.SaveChanges();
-				//return RedirectToInfo();
 			}
 			catch (Exception ex)
 			{
@@ -149,14 +151,11 @@ namespace WePhone.Controllers
             existingProduct.Color = smartphone.Color;
             try
             {
-                // Save changes back to the database
                 _context.SaveChanges();
                 return Ok("Product updated successfully");
             }
             catch (Exception ex)
             {
-                // Handle database update exception
-                // Log the exception or return an appropriate error message
                 return StatusCode(500, "Error updating Product");
             }
         }
@@ -181,9 +180,6 @@ namespace WePhone.Controllers
                 {
                     return NotFound(new { success = false, error = "User not found" });
                 }
-
-                //            _context.SaveChanges();
-                //return RedirectToInfo();
             }
             catch (Exception ex)
             {
@@ -192,12 +188,6 @@ namespace WePhone.Controllers
             }
 
         }
-        //public IActionResult CreateProduct()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
         public async Task<IActionResult> CreateProduct(Smartphone product)
         {
             if (ModelState.IsValid)
@@ -205,10 +195,9 @@ namespace WePhone.Controllers
                 _context.Smartphones.Add(product);
                 await _context.SaveChangesAsync();
 
-            return RedirectToAction("ProductCRUD"); // Assuming there's an "Index" action for listing products.
+            return RedirectToAction("ProductCRUD");
             }
 
-            // If ModelState is not valid, return the view with validation errors
             return View(product);
         }
         public IActionResult Category()
